@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="" name="" id="" value="" />
+		<button type="button" class="a">发送</button>
+		
+		
+		<script type="text/javascript">
+			var btn = document.querySelector('button');
+			var time = 10;
+			
+			btn.addEventListener('click',function(){
+				btn.disabled = true;//点击一次之后禁用按钮
+				
+				var timer = setInterval(function(){
+					
+					if(time == 0){
+						clearInterval(timer);
+						btn.disabled = false;//解除按钮禁用状态
+						btn.innerHTML = '发送';
+						time = 10;//还原计时器
+					}else{
+						btn.innerHTML='还剩'+time+'秒';
+						time--;
+					}
+				},1000);
+			})
+		</script>
+	</body>
+</html>

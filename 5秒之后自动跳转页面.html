@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" class="a1">停止</button>
+		<button type="button" class="go">直接跳转</button>
+		<div></div>
+		<script type="text/javascript">
+			var btn = document.querySelector('.a1');
+			var btn1 = document.querySelector('.go');
+			var div = document.querySelector('div');
+			
+			btn1.addEventListener('click',function(){
+				location.href = 'http://www.baidu.com'
+			})
+			
+			btn.addEventListener('click',function(){
+				//console.log(location.href);
+				//location.href = 'http://www.baidu.com'
+				clearInterval(b);
+			})
+			
+			var timer = 5;
+			gogo();
+			var b =setInterval(gogo,1000)
+			function gogo(){
+				if(timer==0){
+					location.href = 'http://www.baidu.com'
+				}else{
+				div.innerHTML = '您将在'+timer+'秒后跳转到首页'
+				timer--;
+				}
+			}
+		</script>
+	</body>
+</html>

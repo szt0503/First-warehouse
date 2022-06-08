@@ -1,0 +1,41 @@
+1.创建元素
+1.document.write
+2.innerHTML
+3.createElement
+
+2.增加元素
+1.appendChild
+2.insertBefore
+
+3.删除元素
+1.removeChild 
+
+3.改
+主要修改DOM的元素属性，dom元素的内容，属性，表单的值等
+1.修改元素属性:src,href,title等
+2.修改普通元素内容:innerHTML,innerTEXT
+3.修改表氮元素:varlue,type,disabled等
+4.修改元素样式:style,classNme
+
+4.查
+主要获取查询DOM的元素
+1.DOM提供的API方法：getElementByld,getElementsByTagName古老方法不推荐
+2.H5提供的新方法:querySelector,querySelectorAll提倡
+3.利用节点操作获取元素:父(parentNode),子(children),
+兄(previousElementSibling,nextElementSibling)提倡
+
+5.属性操作
+主要针对于自定义属性
+1.setAttribute:这只DOM的属性值
+2.getAttribute:得到DOM的属性值
+3.removeAttribute移除属性
+
+6.事件操作
+onclick		鼠标点击触发
+onmouseover	鼠标经过触发
+onmouseout	鼠标离开触发
+onfocus		获得鼠标焦点触发
+onblur		失去鼠标焦点触发
+onmousemove	鼠标移动触发
+onmouseup	鼠标弹起触发
+onmousedown	鼠标按下触发

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			position: absolute;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background-color: skyblue;
+		}
+	</style>
+	<body>
+		<button class="aa">点击移动450</button>
+		<button class="bb">点击移动900</button>
+		<div></div>
+		<!-- 公式：(目标位置-当前位置)/10 -->
+		<script type="text/javascript">
+			function animate(obj, target,callback) {
+				// clearInterval(obj.a);
+
+				obj.a = setInterval(function() {
+					var step = (target - obj.offsetLeft) / 20;//数值越打缓动越明显
+					step = step>0?Math.ceil(step):Math.floor(step);
+					if (obj.offsetLeft == target) {
+						clearInterval(obj.a);
+						
+						//回调函数
+						if(callback){
+							callback();
+						}
+					}
+					//把每次+1改为公式
+					obj.style.left = obj.offsetLeft + step + 'px';
+				}, 15)
+			}
+
+
+			var div = document.querySelector('div');
+			var btn1 = document.querySelector('.aa');
+			var btn2 = document.querySelector('.bb');
+			btn1.addEventListener('click', function() {
+				animate(div, 450);
+			})
+			
+			btn2.addEventListener('click', function() {
+				animate(div, 900 , function(){
+					div.innerHTML = '我到900px了';
+				});
+			})
+		</script>
+	</body>
+</html>

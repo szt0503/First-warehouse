@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//普通写法需要调用输出
+			function fn(){
+				console.log(1);
+			}
+			fn();
+		//立即执行写法不需要调用直接执行  可以传递参数
+		(function(a,b){
+			console.log(a+b);
+		})(6,3);
+			
+			(function(a,b){
+				console.log(a+b);
+			}(2,3))
+		</script>
+	</body>
+</html>

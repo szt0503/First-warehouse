@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.wrong{
+			color: red;
+		}
+		.right{
+			color: green;
+		}
+	</style>
+	<body>
+			<div>
+				<input type="password" class="ipt" value=""/>
+				<p class="message">请输入6~16位密码</p>
+			</div>
+			<script>
+				var text = document.querySelector('input');
+				var message = document.querySelector('p');
+				text.onblur = function() {
+					if(text.value.length<6 || text.value.length>16){
+						console.log('错误');
+						message.className = 'message wrong';
+					}else{
+						message.className = 'message right';
+					}
+				}
+			</script>
+	</body>
+</html>
