@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+<body>
+    <ul>
+        <li>原先的LI</li>
+    </ul>
+    <div>原先的DIV</div>
+    
+    <script>
+        $(function(){
+            var li = $("<li>我是新的LI</li>")
+            //内部添加
+            // $('ul').append(li);//放到内容的最后面
+            // $('ul').prepend(li);//放到内容的最前面
+
+            //外部添加
+            var div = $('<div>我是新的DIV</div>')
+            // $('div').after(div)//放到内容的最后面
+            // $('div').before(div)//放到内容的最前面
+
+            //删除元素
+            // $('ul').remove();//匹配的元素
+            // $('ul').empty();//匹配的元素的子节点
+            // $('ul').html('');//匹配的元素的子节点
+        })
+    </script>
+</body>
+</html>

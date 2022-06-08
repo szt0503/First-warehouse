@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script>
+        $(function () {
+            var arr = ['red', 'green', 'blue']
+            $('div').each(function (i, domEle) {
+                // i是索引号
+                // domEle是元素对象
+                $(domEle).css('color', arr[i])
+            });
+            $.each({
+                name: 'js',
+                age: '18'
+            }, function (i, ele) {
+                console.log(i); //输出的的是name age属性名
+                console.log(ele); //输出的是js 18 属性值
+            })
+        })
+    </script>
+</body>
+
+</html>

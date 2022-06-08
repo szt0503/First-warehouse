@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AddressMapper">
+    <cache-ref namespace="mapper.UserMapper"/>
+    <resultMap id="AddressMap" type="address">
+        <!--  resultMap  元素的子元素 constructor 元素的作用时映射构造方法，一定要保证参数的对应 -->
+        <constructor>
+            <!-- idArg 是主键，唯一标识  -->
+            <idArg column="id" javaType="Integer"/>
+            <!-- arg 元素标识的是主键列以外的其他列 -->
+            <arg column="contact" javaType="String"/>
+            <arg column="addressDesc" javaType="String"/>
+        </constructor>
+    </resultMap>
+    <select id="queryAll" resultMap="AddressMap"> select * from address </select>
+    <!-- UserMapper.xml 中名为 ontToManyInfo 的 resultMap 会来调用查询语句 -->
+    <!-- 该方法如果在别的类中显示调用，则在Mapper.java 中可以不写对应接口的方法 -->
+    <select id="queryByUserID" resultType="address">
+        <!-- 因为 users 表和 address 表的关键字段为用户id，所以 where 后面的条件语句写的就是两张表中对应的用户 id 字段 -->
+        select * from address where userId = #{id}
+    </select>
+    <resultMap id="AddressAndUserMap" type="address">
+        <!-- 为了解决userId 无法获取值的问题 -->
+        <result property="userId" column="userId"/>
+        <!--  一对一级联时使用 association元素，因为是 XML 间相互调用，所以在另一端也使用 -->
+        <association property="user" column="userId" select="mapper.UserMapper.queryUserById"/>
+    </resultMap>
+    <!-- 如果想要通过哪边显示，就在哪边显示 resultMap，如果涉及到有无法映射的字段，则可在另一端也使用 -->
+    <select id="queryAddressAndUser" resultMap="AddressAndUserMap"> select * from address where id = #{id} </select>
+</mapper>

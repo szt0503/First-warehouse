@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //封装函数
+        function getDate(){
+            var data = localStorage.getItem('todolist');
+            if(data !==null){
+                return JSON.parse(data);
+            }else{
+                return [];
+            }
+        }
+
+        //保存本体存储数据
+        function saveDate(data){
+            localStorage.setItem('todolist',JSON.stringify(data))
+        }
+
+        //渲染加载数据
+        function load(){
+            var data = getDate();
+            $.each(data,function(i,n){
+
+            })
+        }
+    </script>
+</body>
+</html>

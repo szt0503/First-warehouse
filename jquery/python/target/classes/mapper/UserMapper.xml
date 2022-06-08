@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+    <cache />
+    <select id="queryAll" resultType="user" databaseId="mysql">
+        select * from users
+    </select>
+    <select id="queryByFirstName" parameterType="String" resultType="int">
+        select count(*) from users where userName like concat(#{userName}, '%')
+    </select>
+    <select id="queryByName" parameterType="String" resultType="user">
+        select userName as uname, gender, phone from users where userName = #{userName}
+    </select>
+    <!--    1、根据用户名查询，同名时按照 id 升序-->
+    <select id="que" resultType="user">
+        <!--order by 代表排序，其后跟具体的排序字段：asc代表升序，可省略，降序为desc        -->
+        select * from users where userName=#{userName} order by id asc
+        <!-- 通过子查询将重名的用户筛选出来，筛选过程需要先分组在统计数量       -->
+        <!--        select * from users where userName in (select userName from users group by userName having count(userName)>=2) order by id asc-->
+        <!--       判断值要有实际的意义，如果写成2000-00-00，其实不存在这样的日子，不建议-->
+        <!--      2  select * from users where birthday >='2000-01-01'-->
+        <!--        因为没有年龄字段，所以需要通过借助别的字段实现，如生日-->
+        <!--        select * from users where birthday between '1992-03-16' and '2002-03-16'-->
+        <!--xml文件中写sql语句需要注意不能与已有的标签开始符号相同，否则会报错-->
+        <!--        select * from users where （year(curdate())-year(birthday))>=20 and (year(curdate())-year(birthday))<=30-->
+        <!--通过完成<符号的解析-->
+        <!--        select * from users where birthday>='1991-01-01' || birthday<![CDATA[]<=]]>'2001-01-01'-->
+        <!--从功能上实现了，但是从给用户提示的角度来说，不够清晰 分不清是男是女-->
+        <!--        select gender,count(gender) as "男女人数“ from users group by gender-->
+        <!--通过case when 关键字，去指定字段值与男女的映射关系，-->
+        <!--      4  select count(case when gender ='1' then gender end) as man,count(case when gender ='2' then gender end) as woman from users-->
+        <!--通过limit关键字实现返回条数的控制-->
+        <!--        select * from users limit 10-->
+        <!--limit 关键字后的第一个数字代表的是起始位置-->
+        <!--        select * from users order by id  limit 0,10-->
+    </select>
+    <!--传入多个参数，共有 4种方法-->
+    <!--    根据用户名和性别查询用户信息-->
+    <!--   1> 使用Map传入参数，parameterType 是传入的参数类型，可以写为java。util。Map 还可以写为别名mao（MyBatis 定义的）-->
+    <select id="queryByUnameAndGen" parameterType="java.util.Map" resultType="user">
+        select * from users where userName = #{userName} and gender=#{gender}
+    </select>
+    <!-- 2使用@  Param 注解的方式传入参数。一般情况下，写不写parameterType 都可以，会自动探索-->
+    <select id="queryByUnameAndGen1" resultType="user">
+        select * from users where userName = #{userName} and gender=#{gender}
+    </select>
+    <!--3 使用java bean 的方式传入参数-->
+    <select id="queryByUnameAndGen2" resultType="user">
+        select * from users where userName = #{userName} and gender=#{gender}
+    </select>
+    <!--    4.使用混合的方式（即@Param 注解和 JavaBean的方式）传入多个参数。通过java  Bean 传入的参数，可以使用参数名。属性名的方式获取值-->
+    <select id="queryByUnameAndGen3" resultType="user">
+        select * from users where id=#{id} and userName = #{user.userName} and gender=#{user.gender}
+    </select>
+    <!--定义 resultMap，即结果集映射规则，id属性为唯一标识符；type属性为结果集具体映射到的类型-->
+    <resultMap id="Allusers" type="user">
+        <!--id元素用于标识主键，唯一；property属性是POJO类中的属性名称；column属性是数据库对应表的列明-->
+        <id property="id" column="id"/>
+        <!--result元素用于映射除主键列外的其他列，唯一；property属性是POJO类中的属性名称；column属性是数据库对应表的列明-->
+        <result property="smb_id" column="smb_id"/>
+        <result property="userCode" column="userCode"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="userpassword" column="userpassword"/>
+        <result property="gender" column="gender"/>
+    </resultMap>
+    <!--使用resultMap属性需先定义，resultMap元素-->
+    <select id="queryAll1" resultMap="Allusers" databaseId="mysql">
+        select * from users
+    </select>
+    <insert id="insertUser" parameterType="user" >
+        insert into users(<include refid="insertCol"/>) values(#{smb_id},#{userCode},#{username},#{userpassword})
+    </insert>
+    <insert id="insertUser1" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        insert into users(<include refid="insertCol"/>) values(#{smb_id},#{userCode},#{username},#{userpassword})
+    </insert>
+    <insert id="insertUser2" parameterType="user" >
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            select if(id is null,1,max(id)+3) from users
+        </selectKey>
+        insert into users(id,<include refid="insertCol"/>) values(#{id},#{smb_id},#{userCode},#{username},#{userpassword})
+    </insert>
+    <update id="updateUser" parameterType="user">
+        update users set username = #{username} , userpassword = #{userpassword} where id = #{id}
+    </update>
+    <delete id="deleteUserById" parameterType="int">
+        delete from users where id = #{id}
+    </delete>
+    <sql id="insertCol">
+        smb_id,userCode,username,userpassword
+    </sql>
+    <select id="queryProcedure" resultType="String" statementType="CALLABLE">
+        {call ptest(#{id,mode=IN},#{username,mode=OUT,jdbcType=VARCHAR})}
+    </select>
+    <resultMap id="ontToManyInfo" type="user">
+        <!-- 查询嵌套 -->
+        <collection property="addressList" column="id" select="mapper.AddressMapper.queryByUserID"> </collection>
+    </resultMap>
+    <!-- 通过查询用户信息以及其地址信息，之所以可以输出地址信息，是因为进行了两表查询，通过关联的字段进行查询，返回结果在赋值给User类的属性 -->
+    <select id="queryUserAndAdd" resultMap="ontToManyInfo">
+        select * from users where id =#{id}
+    </select>
+
+
+
+
+    <resultMap id="ontToManyInfo1" type="user">
+        <id property="id" column="id"/>
+        <result property="smb_id" column="smb_id"/>
+        <result property="userCode" column="userCode"/>
+        <result property="userName" column="userName" jdbcType="VARCHAR"/>
+        <result property="userPassword" column="userPassword"/>
+        <result property="gender1" column="gender"/>
+        <result property="birthday" column="birthday"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="userRole" column="userRole"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="creationDate" column="creationDate"/>
+        <result property="modifyBy" column="modifyBy"/>
+        <result property="modifyDate" column="modifyDate"/>
+        <!-- 结果嵌套,使用这种方式需要将映射关系显示写出，否则无法完成映射.ofType属性的值为返回的类型 -->
+        <collection property="addressList" ofType="address">
+            <id property="id" column="id"/>
+            <result property="contact" column="contact"/>
+            <result property="addressDesc" column="addressDesc"/>
+            <result property="postCode" column="postCode"/>
+            <result property="tel" column="tel"/>
+            <result property="createdBy" column="createdBy"/>
+            <result property="creationDate" column="creationDate"/>
+            <result property="modifyBy" column="modifyBy"/>
+            <result property="modifyDate" column="modifyDate"/>
+            <result property="userId" column="userId"/>
+        </collection>
+    </resultMap>
+    <select id="queryUserAndAdd1" resultMap="ontToManyInfo1"> select * from users u,address a where u.id =a.userId and u.id = #{id} </select>
+    <resultMap id="genderMap" type="user">
+        <!-- 为了解决 gender1 没有值的问题 -->
+        <result column="gender" property="gender1"/>
+    </resultMap>
+    <select id="queryUserById" resultMap="genderMap"> select * from users where id =#{userId} </select>
+</mapper>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+<body>
+    <input type="checkbox" name="" id="" class="checkall">全选<br>
+    <input type="checkbox" name="" id="" class="j-checkbox">1<br>
+    <input type="checkbox" name="" id="" class="j-checkbox">2<br>
+    <input type="checkbox" name="" id="" class="j-checkbox">3<br>
+    <input type="checkbox" name="" id="" class="j-checkbox">4<br>
+
+
+    <script>
+        $(function(){
+            $('.checkall').change(function(){
+                // 让小盒子的checked值变成大盒子的值（$(this).prop('checked')）
+                console.log($(this).prop('checked'));
+                $('.j-checkbox').prop('checked',$(this).prop('checked'))
+            });
+
+            
+            $('.j-checkbox').change(function(){
+                if($('.j-checkbox:checked').length==$('.j-checkbox').length){
+                    $('.checkall').prop('checked',true)
+                }else{
+                    $('.checkall').prop('checked',false)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        $(function () {
+            var t = {
+                msg: {
+                    sex: '男'
+                }
+            };
+            var obj = {
+                id: 1,
+                name: 'andy',
+                msg: {
+                    age: 18
+                }
+            }
+
+            $.extend(t, obj); //会覆盖t原来得到数据
+            console.log(t);
+            //1.浅拷贝也会覆盖
+            // t.msg.age = 20
+            // console.log(t);
+
+            //2.深拷贝
+            $.extend(true, t, obj);
+            console.log(t);
+        })
+    </script>
+</body>
+
+</html>

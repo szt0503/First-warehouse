@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ProviderMapper">
+    <resultMap id="ProviderMapper" type="provider">
+        <!--  resultMap  元素的子元素 constructor 元素的作用时映射构造方法，一定要保证参数的对应 -->
+        <constructor>
+            <!-- idArg 是主键，唯一标识  -->
+            <idArg column="id" javaType="Integer"/>
+            <!-- arg 元素标识的是主键列以外的其他列 -->
+            <arg column="proCode" javaType="String"/>
+            <arg column="proName" javaType="String"/>
+        </constructor>
+    </resultMap>
+    <!-- select 元素的id属性是该语句的唯一标识符，值与相应的Mapper方法一致
+        resulType 属性是返回类型，也要与相应的mapper方法返回类型一致 -->
+    <select id="queryAll" resultMap="ProviderMapper"> select * from Provider </select>
+    <resultMap id="ontToManyInfo" type="Provider">
+        <!-- 因为数据库列名和类名称完全一致，所以表中其他字段的映射并没有显示的写出 -->
+        <!--         一对多使用 collection 元素 -->
+        <!-- 查询嵌套 -->
+        <!-- 将查询结果映射给 User 类的 addressList 属性。select 属性的值为具体的查寻方法，这里为另一个 mapper 中的方法 -->
+        <collection property="billList" column="providerId" select="mapper.BillMapper.queryByProviderID"> </collection>
+    </resultMap>
+    <!-- 通过查询用户信息及其地址信息，之所以可以输出地址信息，是因为进行了两表查询，通过关联字段进行查询，返回结果赋值给user类的属性 -->
+    <select id="queryProAndBill" resultMap="ontToManyInfo"> select * from provider where id = #{id} </select>
+    <select id="queryProById" resultType="pojo.Provider"> select * from provider where id = #{providerId} </select>
+    <select id="queryProAndBill1" resultMap="ontToManyInfo"> select * from provider p, bill b where p.id = b.providerId and p.id = 1; </select>
+</mapper>

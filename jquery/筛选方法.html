@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <div class="yeye">
+        <div class="father">
+            <div class="son"></div>
+        </div>
+    </div>
+
+    <div class="uu">
+        <ul>
+            <li>啊啊啊啊啊啊啊</li>
+            <li>啊啊啊啊啊啊啊</li>
+            <li>啊啊啊啊啊啊啊</li>
+            <li>啊啊啊啊啊啊啊</li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            //parent返回的是最近一级的父级元素
+            console.log($('.son').parent());
+            //children返回的是最近一级的子级元素
+            console.log($('.yeye').children());
+
+            //后代选择器
+            $('.uu').find("ul").css('color','red')
+        })
+    </script>
+</body>
+
+</html>

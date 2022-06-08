@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery.js"></script>
+    <script src="../js/animate.js"></script>
+    <title>Document</title>
+    <style>
+        .back {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            display: none;
+            right: 30px;
+            bottom: 100px;
+            z-index: 33;
+        }
+
+        .container {
+            position: absolute;
+            top: 500px;
+            left: auto;
+            width: 90%;
+            height: 1300px;
+            background-color: royalblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back">返回顶部</div>
+    <div class="container"></div>
+
+    <script>
+        $(function () {
+            var boxTop = $('.container').offset().top;
+            $(window).scroll(function () {
+                // $(document).scrollTop()
+                if ($(document).scrollTop() >= boxTop) {
+                    $('.back').fadeIn()
+                } else {
+                    $('.back').fadeOut()
+                }
+            })
+
+            //返回顶部动画实现
+            $('.back').click(function() {
+                $('body,html').stop().animate({
+                    scrollTop:0
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

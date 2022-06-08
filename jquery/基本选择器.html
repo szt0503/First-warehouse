@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <div>我是div标签</div>
+    <div class="nav">我是nav类</div>
+    <p>我是p标签</p>
+    <ol>
+        <li>我是ol的li标签</li>
+        <li>我是ol的li标签</li>
+        <li>我是ol的li标签</li>
+    </ol>
+    <ul>
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+    </ul>
+
+    <ul class="uu">
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+        <li>我是ul的li标签</li>
+    </ul>
+    <script>
+
+        $(function () {
+            console.log($('div'));
+            console.log($('.nav'));
+            console.log($('ol li'));
+            console.log($('ul li'));
+
+
+            //隐式迭代
+            $("ul li").css("color", "blue")
+
+            //第一行
+            $("ol li:first").css("color","red")
+            //最后一行
+            $("ol li:last").css("color","green")
+            //序列号1的行
+            $("ol li:eq(1)").css("color","pink")
+            //奇数行
+            $(".uu li:odd").css("color","pink")
+            //偶数行
+            $(".uu li:even").css("color","skyblue")
+        })
+    </script>
+</body>
+
+</html>

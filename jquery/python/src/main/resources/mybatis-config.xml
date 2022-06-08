@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE 后面可以写的有configuration 和 mapper，即文档类型，如果是配置文件，就写configurantion，如果是映射文件，就写mapper-->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    注意正常的元素顺序顺序一旦放错 那么就会报错 正常情况下 会有相应的报错-->
+    <!--    使用properties 元素的方式一  即使用property 子元素-->
+    <!--    <properties>-->
+    <!--&lt;!&ndash;        property 子元素用于设置具体的配置项 该方式的使用便于代码复用，即一次定义，到处使用&ndash;&gt;-->
+    <!--        <property name="database.url" value="jdbc:mysql://localhost:3306/mybatisdb1?serverTimezone=Asia/Shanghai"/>-->
+    <!--        <property name="database.driver" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--        <property name="database.username" value="root"/>-->
+    <!--        <property name="database.password" value="000000"/>-->
+    <!--    </properties>-->
+    <!--    使用properties 元素的方式二  即使用property 文件.通过resource属性完成相应properties文件的引入-->
+    <!-- 方式一只适用于配置项少的情况，故当配置项目较多时建议使用配置二   -->
+    <!--复制文件名步骤 1.右击文件 2选择copy3.在弹窗中根据自己的需求选择复制的内容，如绝对路径，相对路径-->
+    <properties resource="db.properties"/>
+    <settings>
+        <!--缓存的开关，默认值为true-->
+        <setting name="cacheEnabled" value="false"/>
+        <!--配置懒加载的开关,通常会在级联的场景下使用,默认值false-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--根据业务需求，按需取字段,不需要的字段暂时不取回，需要时可取回-->
+        <setting name="aggressiveLazyLoading" value="true"/>
+        <!--自动映射规则的配置，value的值有3种1NONE（不开起映射） 2PARTIAL（支持非嵌套方式的自动映射） 3FULL（所以的都支持）  默认值为2-->
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <!--指定执行器的类型，有3种 1SIMPLE：普通的执行器，2REUSE：重用preparedStatement 3BATCH：批量执行+重用-->
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <!--配置驼峰映射命名的开关,即ACOLUMN ->aColumn-->
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <!--日志的实现类配置,这里使用LOG4J，常用的日志类还有SLF4J，COMMONS_LOGGINGD等-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <typeAlias type="pojo.User" alias="user" />
+        <package name="pojo"/>
+    </typeAliases>
+    <!--default属性的值代表默认选项那个环境-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+            </transactionManager>
+            <dataSource type="POOLED">
+                <!--四大变量：1.URL（连接的IP、端口、数据库名称 ）；2、驱动；3、用户名 ；4、密码?serverTimezone=Asia/Shanhai  -->
+                <!--MySQL8和MySQLS5的url 有所不同 8中一定要配置serverTimezone 属性并且给该属性指定一个值-->
+                <!--property 元素的value属性值为映入的配置项的name 属性值 格式为${database.url},${}包裹的为具体的配置项名称-->
+                <property name="url" value="${database.url}"/>
+                <property name="driver" value="${database.driver}"/>
+                <property name="username" value="${database.username}"/>
+                <property name="password" value="${database.password}"/>
+            </dataSource>
+        </environment>
+        <!--测试环境-->
+        <environment id="test">
+            <transactionManager type="JDBC">
+            </transactionManager>
+            <dataSource type="POOLED">
+                <!--四大变量：1.URL（连接的IP、端口、数据库名称 ）；2、驱动；3、用户名 ；4、密码                -->
+                <property name="url" value="jdbc:mysql://192.168.155.110:3306/mybatisdb1"/>
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="username" value="root"/>
+                <property name="password" value="000000"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <databaseIdProvider type="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+        <property name="Oracle" value="oracle"/>
+        <property name="MySQL" value="mysql"/>
+    </databaseIdProvider>
+    <mappers>
+       <!-- <mapper resource="mapper/UserMapper.xml"/>-->
+        <!--<mapper class="mapper.UserMapper"/>-->
+        <!--<mapper url="file:///F:/java开源框架/untitled/src/main/java/mapper/UserMapper.xml"/>-->
+        <package name="mapper"/>
+    </mappers>
+</configuration>
+
+
+
+
