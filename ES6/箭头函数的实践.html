@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 500px;
+        height: 500px;
+        background-color: red;
+    }
+</style>
+<body>
+    <div id="a"></div>
+    <script>
+        let a = document.getElementById('a');
+
+        a.addEventListener("click",function(){
+            setTimeout(() => {
+                this.style.background = 'pink'
+            },2000);
+        })
+
+
+        const arr = [1,2,3,4,5,6,7,8,9,10];
+        const result = arr.filter(item => item%2 ===0)
+        // const result = arr.filter(item => {
+        //     if(item%2 == 0){
+        //         return true;
+        //     }else{
+        //         return false
+        //     }
+        // })
+        console.log(result);
+    </script>
+</body>
+</html>

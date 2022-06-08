@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        const F4 = ['小沈洋','赵四','刘能']
+        let [xiao,liu,zhao] = F4;
+        console.log(xiao);console.log(liu);console.log(zhao);
+    </script> -->
+
+    <script>
+        const zhao = {
+            name:'赵本山',
+            age:'不想',
+            xiaopin:function(){
+                console.log("我可以演小品");
+            }
+        };
+        // let {name,age,xiaopin} = zhao;
+        // console.log(xiaopin);
+        // xiaopin()
+
+        let {xiaopin} = zhao;
+        xiaopin()
+    </script>
+</body>
+</html>
