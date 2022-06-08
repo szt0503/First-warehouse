@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 调用JS文件 -->
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+<body>
+<!-- 
+    常用按键别名:
+    回车    enter
+    删除    delete
+    退出    esc
+    空格    space
+    大小写  caps-lock
+    换行    tab
+    上      up
+    下      down
+    左      left
+    右      right
+ -->
+
+    <!-- 创建一个容器 -->
+    <div id="root">
+        <h2>欢迎来到{{name}}</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+    </div>
+
+
+
+    <script>
+        Vue.config.prodictionTip = false;
+        
+        let vm = new Vue({
+            el: '#root',
+            data:{
+                name:'内蒙古'
+              },
+              methods:{
+                    showInfo(e){
+                    
+                    console.log(e.target.value);
+                    // console.log(e.keyCode);
+                    }
+              }
+            })
+    </script>
+</body>
+</html>

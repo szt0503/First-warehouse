@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 引入Vue -->
+<script src="..\vue.js"></script>
+<body>
+<!-- 1.插值语法:一般用于指定标签体内的内容
+        （1）功能：用于解析标签体内容
+        （2）写法：{{xxx}}，xxx是JS表达式，且可以直接读取到data中的所有属性
+
+     2.指令语法：一般用于标签属性的内容
+        （1）功能：用具解析标签（包括：标签属性、标签体内容、绑定时间····）
+        （2）举例：v-bind：href="xxx" 或简写为 :href="xxx",xxx同样要写JS表达式，
+            并且可以直接读取到data中的所有属性
+        （3）备注：Vue中有很多指令，且形式都是v-xxx，此处只是用v-bind举例！！！ -->
+
+
+    <!-- 添加一个容器 -->
+    <div id="root">
+        <h1>插值语法</h1>
+        <h3>你好, {{name}}</h3>
+        <hr/>
+        <h1>指令语法</h1>
+        <!-- v-bind可以简写为： -->
+        <a v-bind:href="school.url">点击我{{school.name}}百度</a>
+        <a :href="school.url.toUpperCase()">点击我{{school.name}}百度</a>
+    </div>
+    <script>
+        // 阻止vue在启动时生成生产提示
+         Vue.config.prodictionTip = false;
+
+        //  实例化对象
+        new Vue({
+            el:'#root',
+            data:{
+            name:'jack',
+            school:{
+            url:'http://www.baidu.conm',
+            name1:'跳转'
+            }
+            }
+        })
+    </script>   
+</body>
+</html>

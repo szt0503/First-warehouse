@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+<body>
+    <div id="root">
+        <!-- 人员列表 -->
+        <h2>人员列表</h2>
+        <ul>
+            <li v-for="(p,index) in persons" :key="index">
+                {{p.name}}-{{p.age}}
+            </li>
+        </ul>
+
+        <!-- 汽车列表 -->
+        <h2>汽车列表</h2>
+        <ul>
+            <li v-for="(value,k) in car" :key="k">
+                {{k}}-{{value}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        Vue.config.prodictionTip = false;
+        new Vue({
+            el: '#root',
+            data:{
+                persons:[
+                    {id:'001',name:'张三',age:18},
+                    {id:'002',name:'李四',age:19},
+                    {id:'003',name:'王五',age:20}
+                ],
+                car:{
+                name:'本田',
+                money:'18万',
+                km:'1111'
+              }
+
+              },
+              
+            })
+    </script>
+</body>
+</html>

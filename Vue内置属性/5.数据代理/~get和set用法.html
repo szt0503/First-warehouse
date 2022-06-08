@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+<body>
+    <div id="root">
+
+    </div>
+    <script>
+        let number = 18
+        let person = {
+            name:'张三',
+            sex:'男',
+
+        }
+
+    Object.defineProperty(person,'age',{
+        // value:50000,
+        // enumerable:true,//控制属性是否可以枚举，默认是false
+        // writable:true,//控制属性是否可以被修改，默认是false
+        // configurable:true//控制属性是否可以被删除，默认是false
+
+        //当有人读取person的age属性时，get(getter)函数就会被调用，且返回值就是age的值
+        get(){
+            console.log('有人读取属性了');
+            return number
+        },
+
+        //当有人修改person的age属性时，set(setter)函数就会被调用
+        set(value){
+            console.log('有人修改了属性且值是：',value);
+            number = value
+        }
+    })
+
+
+    console.log(Object.keys(person));
+       // console.log(person)
+    </script>
+</body>
+</html>

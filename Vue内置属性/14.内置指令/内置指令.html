@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+
+<body>
+<!-- 
+            我们学过的指令：
+                    单向绑定(v-bind)：数据只能从data流向页面
+                    双向绑定(v-model)：数据不仅能从从data流向页面，也能从页面流向data
+
+                    v-bind :单向绑定解析表达式，可简写为 ：xxx
+                    v-model:双向数据绑定
+                    v-for  :遍历数组/对象/字符串
+                    v-on   :绑定事件监听，可简写为@
+                    v-1f   :条件渲染（动态控制节点是否存存在）
+                    v-else :条件渲染（动态控制节点是否存存在）
+                    v-show :条件渲染（动态控制节点是否展示）
+
+                    v-once：在初次渲染后，就视为静态内容了
+                    v-pre：跳过其所在节点的编译过程
+
+        -->
+
+    <div id="root">
+        <div v-text="name"></div>
+        <div>{{name}}</div>
+    </div>
+
+    <script>
+        Vue.config.prodictionTip = false;
+        new Vue({
+            el: '#root',
+            data:{
+                name:'hi'
+              }
+        
+        
+        
+        
+            })
+    </script>
+</body>
+</html>

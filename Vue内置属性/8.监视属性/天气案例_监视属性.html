@@ -1,0 +1,53 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+<body>
+    <div id="root">
+
+        <h2>今天天气很{{info}}</h2>
+        <button @click = "changeWrather">切换天气</button>
+    </div>
+
+    <script>
+        Vue.config.prodictionTip = false;
+        const vm = new Vue({
+            el: '#root',
+            data:{
+                isHot:true
+            },
+            computed:{
+                info(){
+                    return this.isHot ? '炎热' : '凉爽'
+                }
+            },
+            methods: {
+                changeWrather(){
+                    this.isHot = !this.isHot
+                }
+            },
+            // watch:{
+            //     info:{
+            //         immediate:true,//初始化时让handler调用一下
+            //         //什么时候调用？ 当isHot发生改变时
+            //         handler(newValue,oldValue){
+            //             console.log(newValue,oldValue);
+            //         }
+            //     }
+            // }
+        })
+        vm.$watch('isHot',{
+                immediate:true,//初始化时让handler调用一下
+                //什么时候调用？ 当isHot发生改变时
+                handler(newValue,oldValue){
+                console.log(newValue,oldValue);
+                }
+        })
+    </script>
+</body>
+</html>

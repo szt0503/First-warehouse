@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+
+<body>
+    <div id="root">
+            <h2>当前的N值是{{n}}</h2>
+            <button @click = 'n++'>电我N+1</button>
+
+            <div v-show="n==1">Angeular</div>
+            <div v-show="n==2">React</div>
+            <div v-show="n==3">Vue</div>
+
+        <!-- style = dispaly的效果 -->
+        <!-- <h2 v-show="false">{{name}}</h2> -->
+
+        <!-- 直接消除 -->
+        <!-- <h2 v-if="false">{{name}}</h2> -->
+    </div>
+
+    <script>
+        Vue.config.prodictionTip = false;
+        new Vue({
+            el: '#root',
+            data:{
+                name:'money',
+                n:0
+              },
+            })
+    </script>
+</body>
+</html>

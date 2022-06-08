@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .basic{
+        width: 400px;
+        height: 100px;
+        border: 1px dashed black;
+
+    }
+    .normal{
+        width: 400px;
+        height: 100px;
+        background-color: skyblue;
+        border: 1px solid green;
+    }
+    .happy{
+        width: 400px;
+        height: 100px;
+        border: 1px solid red;
+        background-image: linear-gradient(to right, red ,blue);
+    }
+    .sad{
+        width: 400px;
+        height: 100px;
+        background-color: #ccc;
+        border: 1px solid green;
+    }
+    .text{
+        width: 400px;
+        height: 100px;
+        font-size: 30px;
+    }
+</style>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+<body>
+    <div id="root">
+        <div class="basic" :class = "a" @click="chengeMode">{{name}}</div><br>
+        <div class="basic" :class = "arr" @click ='del'>{{name}}</div>
+    </div>
+    <script>
+        Vue.config.prodictionTip = false;
+        new Vue({
+            el: '#root',
+            data:{
+                name:'money',
+                a:'normal',
+                arr:['happy','sad']
+              },
+              methods: {
+                  chengeMode(){
+                    const arr = ['haap','sad','normal']
+                    const index =  Math.floor(Math.random()*3)
+                    this.a = arr[index]
+                  },
+                  del(){
+                    this.arr = ['normal']
+                  }
+              },
+            })
+    </script>
+</body>
+</html>

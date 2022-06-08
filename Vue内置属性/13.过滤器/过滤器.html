@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\vue.js"></script>
+<script src="C:\Users\Administrator\Desktop\Vue初学\Vue\timer.js"></script>
+<body>
+    <div id="root">
+        <!-- 计算机属性实现 -->
+        <h3>{{fmtTime}}</h3>
+        <!-- methods实现 -->
+        <h3>{{timers()}}</h3>
+        <!-- 过滤器 -->
+        <h3>{{timer | tt}}</h3>
+    </div>
+
+    <script>
+    Vue.config.prodictionTip = false;
+    //全局过滤器
+    Vue.filter('tt',function(value){
+        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+    })
+    new Vue({
+        el: '#root',
+        data:{
+            timer:""
+          },
+        computed: {
+            fmtTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        methods: {
+            timers(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+
+        //局部过滤器
+        // filters:{
+        //     tt:function(value){
+        //         return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+        //     }
+        // }
+
+
+        })
+    </script>
+</body>
+</html>
