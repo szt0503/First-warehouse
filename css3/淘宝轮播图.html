@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+
+        }
+
+        .tb-promo {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            background-color: skyblue;
+            margin: 100px auto;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            /* 让绝对定位的盒子垂直居中 */
+            top: 50%;
+            margin-top: -15px;
+            width: 20px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .prev {
+            left: 0;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .next {
+            right: 0;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        .promo-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -35px;
+            width: 70px;
+            height: 13px;
+            background-color: rgba(252, 255, 252, 0.3);
+            border-radius: 7px;
+
+        }
+
+        .promo-nav li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tb-promo">
+        <a href="#" class="prev">&lt;</a>
+        <a href="#" class="next">&gt;</a>
+        <ul class="promo-nav">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+    <script>
+        var lis = document.querySelectorAll('li')
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = '#ff5000';
+            }
+        }
+    </script>
+</body>
+
+</html>

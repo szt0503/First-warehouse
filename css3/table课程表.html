@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        border: 1px solid #ccc;
+        text-align: center;
+        width: 1200px;
+        border-collapse: collapse; /* 属性设置是否将表格边框折叠为单一边框 */
+    }
+    td,th{
+        border: 1px solid #ccc;
+        width: 80px;
+        height: 40px;
+    }
+    /* tr:hover{
+        background-color: #ccc;
+    } */
+</style>
+<body>
+    <table>
+
+        <tr>
+            <td></td>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+            <th>星期四</th>
+            <th>星期无</th>
+            <th>星期六</th>
+            <th>星期日</th>
+        </tr>
+        <tr>
+            <th rowspan="2">上午</th>
+            <td>JS  15</td>
+            <td>vue 5</td>
+            <td>JS  15</td>
+            <td>vue 5</td>
+            <td>JS  15</td>
+            <td>vue 5</td>
+            <td>面试大纲</td>
+        </tr>
+        <tr>
+            <td colspan="7"></td>
+        </tr>
+        <tr>
+            <th rowspan="2">下午</th>
+            <td>css 20</td>
+            <td>es5 6</td>
+            <td>css 20</td>
+            <td>es6 5</td>
+            <td>css 20</td>
+            <td rowspan="2">js 10</td>
+            <td rowspan="2">css 20</td>
+        </tr>
+        <tr>
+            <td>js 30</td>
+            <td>js 10</td>
+            <td>vue 3</td>
+            <td>js 10</td>
+            <td>es6 5</td>
+        </tr>
+    </table>
+</body>
+</html>
