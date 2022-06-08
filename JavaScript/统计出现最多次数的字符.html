@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var str = '1a2s5c4cv1cxvxfds5f44sx';
+			var o ={};
+			for(var i = 0;i<str.length;i++){
+				var chars = str.charAt(i);
+				if(o[chars]){
+					o[chars]++;
+				}else{
+					o[chars] = 1;
+				}
+			}
+			console.log(o);
+			
+			//遍历对象
+			var max = 0;
+			var ch = '';
+			for(var k in o){
+				//K得到的是属性名
+				//o[k]得到的是属性值
+				if(o[k]>max){
+					max = o[k];
+					ch = k;
+				}
+			}
+			console.log(max,ch);
+		</script>
+	</body>
+</html>

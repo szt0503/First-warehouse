@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+		//keyCode	获取当前按键的ASCII码值
+		//keyup		不区分字母大小写
+		//keypress	区分字母大小写
+				document.addEventListener('keyup',function(e){
+					console.log("up:"+e.keyCode);
+				})
+				document.addEventListener('keypress',function(e){
+					console.log("press:"+e.keyCode);
+				})
+		</script>
+	</body>
+</html>

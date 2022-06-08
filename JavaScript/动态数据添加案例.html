@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		table{
+			width: 500px;
+			margin: 100px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		
+		td,th{
+			border: 1px solid #333;
+		}
+		thead tr{
+			height: 40px;
+			background-color: #ccc;
+		}
+	</style>
+	<body>
+		<table border="" cellspacing="0" cellpadding="">
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>科目</th>
+					<th>成绩</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		
+		<script>
+			var datas = [
+				{
+				name:'1',
+				subject:'html',
+				score:100
+			},
+			{
+				name:'2',
+				subject:'html',
+				score:98
+			},
+			{
+				name:'3',
+				subject:'html',
+				score:988
+			}
+			]
+			
+			var tbody = document.querySelector('tbody');
+			
+			for(var i = 0;i<datas.length;i++){
+				//创建tr并插入
+				var tr = document.createElement('tr');
+				tbody.appendChild(tr);
+				
+				//行里面创建单元格td 单元格的数量取决于每个对象属性里的个数
+				for(var k in datas[i]){
+					//创建单元格
+					var td = document.createElement('td');
+					
+					//把对象的属性值给 td
+					td.innerHTML = datas[i][k];
+					tr.appendChild(td);
+				}
+				
+				//创建删除单元格
+				var td = document.createElement('td');
+				tr.appendChild(td);
+				td.innerHTML = '<a href ="javascript:;">删除</a>'
+			}
+			//添加删除
+			var as = document.querySelectorAll('a');
+			
+			for(var i = 0; i<as.length; i++){
+				as[i].onclick = function(){
+					//点击a删除当前所在的行
+					tbody.removeChild(this.parentNode.parentNode);
+				}
+			}
+		</script>
+	</body>
+</html>

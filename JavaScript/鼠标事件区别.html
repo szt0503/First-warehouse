@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#big{
+			float: left;
+			width: 300px;
+			height: 300px;
+			background-color: aqua;
+		}
+		#small{
+			width: 150px;
+			height: 150px;
+			background-color: black;
+		}
+	</style>
+	<body>
+		<div id="big">
+			<div id="small"></div>
+		</div>
+		<script>
+			var big = document.querySelector('#big');
+			var small = document.querySelector('#small');
+			//不管经过大盒子还是小盒子都输出
+			//mouseover不会冒泡
+			big.addEventListener('mouseover',function(){
+				console.log(1);
+			})
+			
+			//经过大盒子输出
+			//mouseenter不会冒泡
+			big.addEventListener('mouseenter',function(){
+				console.log(2);
+			})
+		</script>
+	</body>
+</html>

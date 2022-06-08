@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var a = 'abdusodsadsafofdsfgofsdo';
+			var index = a.indexOf('o');
+			var num = 0;
+			while(index !== -1 ){
+				console.log(index);
+				index = a.indexOf('o',index+1);
+				num++;
+			}
+			console.log('字符串出现了'+num+'次o');
+		</script>
+	</body>
+</html>

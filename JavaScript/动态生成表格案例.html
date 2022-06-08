@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    thead tr{
+        background-color: #ccc;
+    }
+    th{
+        margin-left: 12px;
+
+    }
+</style>
+<body>
+    <table>
+    <thead>
+        <tr>
+        <td>姓名</td>
+        <td>科目</td>
+        <td>成绩</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+    <script>
+        var arr = [
+            {name:'1',subject:'java',score:100},
+            {name:'2',subject:'java',score:100},
+            {name:'3',subject:'java',score:100}
+        ]
+        var tbody = document.querySelector('tbody');
+        for(var i=0;i<arr.length;i++){
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            for(var k in arr[i]){
+                var td = document.createElement('td');
+                td.innerHTML = arr[i][k]
+                tr.appendChild(td);
+            }
+        }
+    </script>
+</table>
+</body>
+</html>

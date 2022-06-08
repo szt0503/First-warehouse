@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a">
+        <div id="b">
+            <div id="c"></div>
+        </div>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        var divc = document.getElementById('c');
+        var divb = document.getElementById('b');
+        var diva = document.getElementById('a');
+        var ul = document.querySelector('ul');
+        var lis = document.querySelectorAll('li');
+        //获取到离当前节点最近的父节点
+        console.log(divc.parentNode);
+        //获取到离当前节点最近的儿子节点
+        console.log(divb.childNodes[1]);
+        //获取当前节点所有儿子节点
+        console.log(ul.children);
+
+        //获取第一个与最后一个子元素节点
+        console.log(ul.firstElementChild);
+        console.log(ul.lastElementChild);
+
+        //实际开发写法
+        console.log(ul.children[0]);
+
+        //兄弟节点
+        console.log(diva.nextElementSibling);
+        
+    </script>
+</body>
+</html>

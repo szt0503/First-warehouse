@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // replace,只替换想替换的第一个字符
+        var str = 'andy';
+        console.log(str.replace('a','b'));
+
+        // 替换所有方法
+        var str1 = 'stostostosto';
+        while(str1.indexOf('o') !== -1){
+            str1 = str1.replace('o','r');
+        }
+        console.log(str1);
+
+
+        //字符串转换为数组split 分割字符      jion 把数组转换为字符串
+        var str2 ='red,pink,bule';
+        console.log(str2.split(','));
+    </script>
+</body>
+</html>

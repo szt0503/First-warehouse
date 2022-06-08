@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        // innerHTML识别html标签（会保留空格和换行）
+        // innerText不识别html标签（会去除空格和换行）  非标准
+        var div = document.querySelector('div');
+        div.innerHTML = '今天是：<strong>2021         123</strong>'//常用
+        //div.innerText = '今天是：<strong>2021         123</strong>'
+    </script>
+</body>
+</html>

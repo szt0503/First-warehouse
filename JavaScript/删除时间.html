@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button>123</button>
+		<button>123</button>
+		
+		<script>
+			var a = document.querySelectorAll('button');
+			a[0].onclick = function(){
+				alert(11);
+				a[0].onclick = null;
+			}
+			
+			a[1].addEventListener('click',fn);
+			function fn(){
+				alert(22);
+				a[1].removeEventListener('click',fn);
+			}
+		</script>
+	</body>
+</html>
