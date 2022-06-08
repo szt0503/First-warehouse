@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		你好
+		<script>
+		
+		//1.contextmenu 可以禁用鼠标右键采单
+			document.addEventListener('contextmenu',function(e){
+				e.preventDefault();
+			})
+			
+		//2.selectstart 禁止选中文字
+		document.addEventListener('selectstart',function(e){
+			e.preventDefault();
+		})
+		
+		
+		</script>
+	</body>
+</html>

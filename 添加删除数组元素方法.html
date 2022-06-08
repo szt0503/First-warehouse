@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3];
+        //往数组最后添加一个元素    push()
+        arr.push('pink');
+        console.log(arr);
+
+        //往数组开头加一个元素      unshift()
+        arr.unshift('-1')
+        console.log(arr);
+
+        //删除数组最后一个元素      pop()
+        console.log(arr.pop());
+        console.log(arr);
+
+        //删除数组第一个元素        shift()
+        console.log(arr.shift());
+        console.log(arr);
+    </script>
+    <script>
+        var arr = [55,60,4,12,44,20,43,84,80,78]
+        var newArr=[];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]>50){
+                newArr.push(arr[i])
+            }
+        }
+        console.log(newArr);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.bg{
+			background-color: black;
+		}
+	</style>
+	<body>
+		<div class="one two"></div>
+		<button type="button">开关灯</button>
+		<script type="text/javascript">
+			var div = document.querySelector('div');
+			
+			//1.添加类名   在后面追加类名不覆盖
+			//（className会覆盖之前的类名）
+			div.classList.add('three');
+			console.log(div);
+			
+			//2.删除类名
+			div.classList.remove('one');
+			
+			//3.切换类  自动判断
+			var btn = document.querySelector('button');
+			btn.addEventListener('click',function(){
+				document.body.classList.toggle('bg');
+			})
+		</script>
+	</body>
+</html>

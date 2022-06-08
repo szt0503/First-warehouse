@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.head{
+			width: 90%;
+			height: 500px;
+			background-color: aqua;
+			margin-left: 50px;
+		}
+		.arm{
+			width: 90%;
+			height: 200px;
+			background-color: aqua;
+			margin-top: 30px;;
+			margin-left: 50px;
+		}
+		.body{
+			width: 90%;
+			height: 800px;
+			background-color: aqua;
+			margin-top: 30px;;
+			margin-left: 50px;
+		}
+		.leg{
+			width: 90%;
+			height: 200px;
+			background-color: aqua;
+			margin-top: 30px;;
+			margin-left: 50px;
+		}
+		.a{
+			position: absolute;
+			width: 50px;
+			height: 150px;
+			background-color: red;
+			top:540px;
+			left: 93%;
+		}
+
+		.a span{
+			display: none;
+		}
+	</style>
+	<body>
+		<div class="a"><span>返回顶部</span></div>
+		<div class="head">头</div>
+		<div class="arm">脖子</div>
+		<div class="body">身体</div>
+		<div class="leg">结尾</div>
+		<script type="text/javascript">
+				var a = document.querySelector('.a');
+				var arm = document.querySelector('.arm');
+				var armTop = arm.offsetTop;
+				var aTop = a.offsetTop-armTop;
+				
+				var body = document.querySelector('.body');
+				var span = document.querySelector('span');
+				
+				var bodyTop = body.offsetTop;
+				
+				
+				document.addEventListener('scroll',function(){
+					
+					//页面被卷去的头部
+					console.log(window.pageYOffset);
+					
+					//336
+					if(window.pageYOffset>=armTop){
+						a.style.position = 'fixed';
+						a.style.top = aTop+'px';
+					}else{
+						a.style.position = 'absolute';
+						a.style.top = '540px';
+					}
+					
+					
+					if(window.pageYOffset>=bodyTop){
+						span.style.display = 'block';
+					}else{
+						span.style.display = 'none';
+					}
+					
+				});
+							
+					span.addEventListener('click',function(){
+						window.scroll(0,100);
+					})
+		</script>
+	</body>
+</html>

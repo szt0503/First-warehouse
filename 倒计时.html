@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#h {
+			width: 50px;
+			height: 50px;
+			background-color: black;
+			color: blue;
+			margin-left: 5px;
+			text-align: center;
+			line-height: 50px;
+			float: left;
+		}
+
+		#s {
+			width: 50px;
+			height: 50px;
+			background-color: black;
+			color: blue;
+			margin-left: 5px;
+			text-align: center;
+			line-height: 50px;
+			float: left;
+		}
+
+		#m {
+			width: 50px;
+			height: 50px;
+			background-color: black;
+			color: blue;
+			margin-left: 5px;
+			text-align: center;
+			line-height: 50px;
+			float: left;
+		}
+	</style>
+	<body>
+		<div id="h"></div>
+		<div id="m"></div>
+		<div id="s"></div>
+		<button>停止倒计时</button>
+		<script type="text/javascript">
+			var h1 = document.querySelector('#h');
+			var m1 = document.querySelector('#m');
+			var s1 = document.querySelector('#s');
+			var btn = document.querySelector('button');
+			var inputTime = +new Date('2021-12/30 12:00'); //返回用户输入时间毫秒数
+			
+			countDown();//先调用一次函数防止出现空白
+			//开启定时器
+			var a =setInterval(countDown,1000);
+
+			function countDown() {
+				var nowTime = +new Date(); //返回当前系统时间
+
+				var times = (inputTime - nowTime) / 1000; //剩余时间的总秒数
+				var d = parseInt(times / 60 / 60 / 24); //天
+				d = d < 10 ? '0' + d : d;
+
+
+				var h = parseInt(times / 60 / 60 % 24); //时
+				h = h < 10 ? '0' + h : h;
+				h1.innerHTML = h; //吧剩余的小时给盒子
+
+
+				var m = parseInt(times / 60 % 60); //分
+				m = m < 10 ? '0' + m : m;
+				m1.innerHTML = m; //吧剩余的小时给盒子
+
+
+				var s = parseInt(times % 60); //秒
+				s = s < 10 ? '0' + s : s;
+				s1.innerHTML = s; //吧剩余的小时给盒子
+				return d + '天' + h + '时' + m + '分' + s + '秒';
+			}
+			//停止倒计时
+			btn.addEventListener('click',function(){
+				clearInterval(a)
+			})
+		</script>
+	</body>
+</html>

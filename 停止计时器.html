@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button">停止</button>
+		<script type="text/javascript">
+			var btn = document.querySelector('button');
+			function boom(){
+				alert('爆炸了');
+			}
+			
+			var a = setTimeout(boom,5000);
+			
+			btn.addEventListener('click',function(){
+				clearTimeout(a);//括号里是定时器的名字
+			})
+		</script>
+	</body>
+</html>

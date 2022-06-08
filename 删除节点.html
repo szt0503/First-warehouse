@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button">删帖</button>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script type="text/javascript">
+			var ul = document.querySelector('ul');
+			//ul.removeChild(ul.children[0]);
+			
+			var btn = document.querySelector('button')
+			
+			btn.onclick = function(){
+				
+				if(ul.children.length === 0){
+					this.disabled =true;//禁用用按钮
+				}else{
+					ul.removeChild(ul.children[0]);
+				}
+			}
+		</script>
+	</body>
+</html>

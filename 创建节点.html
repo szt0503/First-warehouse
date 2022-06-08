@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>123</li>
+		</ul>
+		<script type="text/javascript">
+		
+		//创建
+			var a = document.createElement('li');
+			a.innerHTML = '我是a'
+			
+		//添加
+			var ul = document.querySelector('ul');
+			//后面添加
+			ul.appendChild(a);
+			
+			
+			var aa = document.createElement('li');
+			aa.innerHTML = '我是aa'
+			//前面添加
+			ul.insertBefore(aa, ul.children[0]);
+		</script>
+	</body>
+</html>

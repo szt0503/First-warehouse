@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="a"></div>
+		
+		<script>
+			var div = document.querySelector('div');
+			console.log(div.id);
+			
+			console.log(div.getAttribute('id'));
+			
+			
+			//设置属性值
+			//div.id='text';
+			
+			div.setAttribute('id','text');//更改，也可以添加
+
+			div.removeAttribute('id');//去除属性值
+		</script>
+	</body>
+</html>

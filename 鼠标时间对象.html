@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body{
+			height: 3000px;
+		}
+	</style>
+	<body>
+		
+		<script type="text/javascript">
+			
+			//鼠标时间对象 MouseEvent
+			document.addEventListener('click',function(e){
+				
+				//1.client 鼠标在可视区的X和Y
+				console.log(e.clientX);
+				console.log(e.clientY);
+				console.log('--------------------');
+				
+				//.page 鼠标在页面文档的X和Y
+				console.log(e.pageX);
+				console.log(e.pageY);
+				
+				
+			})
+		</script>
+	</body>
+</html>

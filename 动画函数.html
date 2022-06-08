@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			position: absolute;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background-color: skyblue;
+		}
+	</style>
+	<body>
+		<!-- 核心原理：通过定时器setInterval()不断移动盒子位置. -->
+		<button type="button">点击移动</button>
+		<div></div>
+		<script type="text/javascript">
+		
+			//动画原理  必须加定位(封装)
+			function animate(obj,target){
+				clearInterval(obj.a);
+				
+				obj.a  = setInterval(function(){
+					if(obj.offsetLeft>=target){
+						clearInterval(a);
+					}
+					obj.style.left = obj.offsetLeft+1+'px';
+				},30)
+			}
+			
+			
+			
+			var div = document.querySelector('div');
+			var btn = document.querySelector('button');
+			btn.addEventListener('click',function(){
+				animate(div,900);
+			})
+			
+		</script>
+	</body>
+</html>

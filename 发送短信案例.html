@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    手机号:<input type="number" name="" id="">
+    <button>点击发送短信</button>
+
+    <script>
+        var btn = document.querySelector('button');
+        var time = 3;
+        btn.addEventListener('click', function () {
+            btn.disabled = true; //禁用按钮
+            var a = setInterval(function () {
+
+                if (time == 0) {
+                    clearInterval(a);
+                    btn.disabled = false;//解除禁用按钮
+                    btn.innerHTML = '点击发送短信';
+                    time = 3;
+                } else {
+                    btn.innerHTML = '还剩下' + time + '秒';
+                    time--;
+                }
+            }, 1000);
+        })
+    </script>
+</body>
+
+</html>
