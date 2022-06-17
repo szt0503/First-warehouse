@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 100px;
+            margin:100px auto;
+            background-color: hsla(180, 73%, 78%, 0.199);
+            border-radius: 20px;
+            text-align: center;
+            padding: 20px;
+        }
+        #check{
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            background-color: rgba(128, 128, 128, 0.158);
+            color:blue;
+            font-size:26px;
+            font-style: italic;
+            letter-spacing: 2px;
+            font-family:Arial, Helvetica, sans-serif;
+            margin-bottom: 10px;
+        }
+        .ma{
+            margin-bottom: 12px;
+        }
+ 
+    </style>
+</head>
+ 
+<body>
+    <div class="container">
+        <div>
+            <span id="check">adf34y</span>
+            <a href="#" id="checka">看不清换一张</a>
+        </div>
+        <div class="ma">
+            <label for="zheng">验证码</label>
+            <input type="text" id="zheng">
+        </div>
+        <button id="btn">确定</button>
+    </div>
+ 
+    <script>
+        let sum=[0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+        var check=document.getElementById("check");
+        var code;
+         
+        function fun(){
+            let str="";
+            for(let i=0;i<6;i++){
+                let pos=Math.round(Math.random()*15);//注意这个写法，取随机数
+                str+=sum[pos];
+            }
+            check.innerHTML=str;
+            return str;
+        }
+ 
+        window.onload=function(){
+            code=fun();
+        }
+ 
+        let checka=document.getElementById("checka");
+        checka.onclick=function(){
+            code=fun();
+        }
+         
+        let btn=document.getElementById("btn");
+        btn.onclick=function(){
+            let t=document.getElementById("zheng").value;
+            console.log(t)
+            if(t==code){
+                alert("正确");
+                
+                code=fun();debugger
+                document.getElementById("zheng").value="";
+            }
+            else{
+                alert("错误");
+                document.getElementById("zheng").value="";
+            }
+        }
+         
+ 
+    </script>
+</body>
+ 
+</html>

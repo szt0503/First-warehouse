@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <p><input type="checkbox">张三</p>
+        <p><input type="checkbox">李四</p>
+        <p><input type="checkbox">王五</p>
+        <p><input type="checkbox">赵六</p>
+    </form>
+    <button id="all" onclick="getAll(0)">全选</button>
+    <button id="no" onclick="getAll(1)">全不选</button>
+    <button id="change" onclick="getAll(2)">反选</button>
+</body>
+<script>
+    let input = document.getElementsByTagName('input')
+    let btn = document.getElementsByTagName('button')
+
+    // let all = document.getElementById('all')
+    // let change = document.getElementById('change')
+    // let no = document.getElementById('no')
+    // //全选
+    // all.onclick = function () {
+    //     for (let i = 0; i < input.length; i++) {
+    //         input[i].checked = true
+    //     }
+    // }
+    // //全不选
+    // no.onclick = function () {
+    //     for (let i = 0; i < input.length; i++) {
+    //         input[i].checked = false
+    //     }
+    // }
+    // //反选
+    // change.onclick = function () {
+    //     for (let i = 0; i < input.length; i++) {
+    //         input[i].checked = !input[i].checked
+    //     }
+    // }
+
+    //封装函数优化
+    function getAll(num) {
+        for (let i = 0; i < input.length; i++) {
+            if (num == 0) {
+                input[i].checked = true
+
+            } else if (num == 1) {
+                input[i].checked = false
+
+            } else {
+                input[i].checked = !input[i].checked
+
+            }
+        }
+    }
+</script>
+
+</html>

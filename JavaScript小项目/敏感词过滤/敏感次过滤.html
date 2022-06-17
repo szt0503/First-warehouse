@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #res{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ccc;
+    }
+</style>
+<body>
+    <h2>敏感词过滤</h2>
+    <p>
+        <textarea name="" id="area" cols="30" rows="10"></textarea>
+    </p>
+
+    <p>
+        <input type="submit" value="发布" id='input'>
+    </p>
+    <p id="res"></p>
+</body>
+
+<script>
+    //正则表达式
+    let area = document.getElementById('area')
+    let input = document.getElementById('input')
+    let res = document.getElementById('res')
+    //创建正则
+    let reg = /妈|操/g
+    input.onclick = function(){
+        let a  = area.value.replace(reg,'*')
+        console.log(a);
+        res.innerHTML = a
+    }
+</script>
+</html>

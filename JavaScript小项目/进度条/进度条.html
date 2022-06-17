@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father {
+        width: 500px;
+        height: 41px;
+        border: 1px solid orange;
+    }
+
+    .son {
+        width: 0px;
+        height: 40px;
+        background-color: #f0f;
+        text-align: center;
+        line-height: 40px;
+    }
+</style>
+
+<body>
+    <div class="father">
+        <div class="son">
+            <span>0</span><span>%</span>
+        </div>
+    </div>
+    <button id='btn'>安装</button>
+</body>
+<script>
+    //利用定时器进行修改width递增与span内的0
+    let son = document.getElementsByClassName('son');
+    let span = document.getElementsByTagName('span');
+    let btn = document.getElementById('btn');
+    let timer = null
+    btn.onclick = function () {
+        let num = 0;
+        if (timer == null) {
+            timer = setInterval(() => {
+                num += 20
+                son[0].style.width = num + 'px'
+                //百分比
+                span[0].innerText = Math.ceil(num/500*100)
+                if (num >= 500) {
+                    clearInterval(timer)
+                }
+            }, 1000)
+        }
+
+    }
+</script>
+
+</html>

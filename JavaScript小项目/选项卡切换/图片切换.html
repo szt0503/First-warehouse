@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    ul{
+        overflow: hidden;
+    }
+    li{
+        width: 100px;
+        height: 40px;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        float: left;
+        line-height: 40px;
+        text-align: center;
+    }
+    div{
+        width: 406px;
+        height: 406px;
+        border: 1px solid #ccc;
+    }
+    img{
+        width: 406px;
+        height: 406px;
+        display: none;
+    }
+</style>
+<body>
+    <ul>
+        <li>沙皮</li>
+        <li>博美</li>
+        <li>卷毛</li>
+        <li>金毛</li>
+    </ul>
+    <div>
+        <img src="./1.jpeg" style="display: block">
+        <img src="./2.jpeg">
+        <img src="./3.jpeg">
+        <img src="./4.jpeg">
+    </div>
+</body>
+<script>
+    let li = document.getElementsByTagName('li');
+    let img = document.getElementsByTagName('img');
+
+    for(let i=0;i<li.length;i++){
+        li[i].index = i;
+        li[i].onmouseover=function(){
+            this.style.backgroundColor = 'yellow'
+
+            //先隐藏，再显示对应的
+            for(let j=0;j<img.length;j++){
+                img[j].style.display = 'none'
+
+            }
+            img[this.index].style.display = 'block'
+        }
+        li[i].onmouseout=function(){
+            li[i].style.backgroundColor = '#eee'
+        }
+    }
+</script>
+</html>

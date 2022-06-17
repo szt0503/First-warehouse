@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div class="v_code">
+        <div class="code_show">
+            <span class="code" id="cheakCode">adf34y</span>
+            <a id="linkbt">看不清换一张</a>
+        </div>
+        <div class="input_code">
+            <label for="inputCode">验证码:</label>
+            <input type="text" id="inputCode1">
+            <span id="text_show"></span>
+        </div>
+        <input type="button" id="Button1" value="确定">
+    </div>
+</body>
+
+<script>
+    //生成验证码
+    //6位数  0-9 a-f
+    window.onload = function () {
+        var res = getCode()
+        function getCode() {
+            var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+            var str = '';
+            for (var i = 0; i < 6; i++) {
+                var num = Math.round(Math.random() * (15 - 0) + 0);
+                str += arr[num]
+            }
+            return str;
+        }
+        document.getElementById('cheakCode').innerHTML = res
+        //点击看不清换一张时执行getcode方法
+        document.getElementById('linkbt').onclick = function () {
+            document.getElementById('cheakCode').innerHTML = getCode()
+        }
+        //验证
+
+        document.getElementById('Button1').onclick = function () {
+            // var cheakCode = document.getElementById('cheakCode').innerHTML
+            var inputCode1 = document.getElementById('inputCode1').value
+            if (res != inputCode1) {
+                alert('您输入的验证码不正确')
+                document.getElementById('inputCode1').value = ''
+            } else {
+                alert("正确");
+                return res
+            }
+        }
+    }
+</script>
+
+</html>
