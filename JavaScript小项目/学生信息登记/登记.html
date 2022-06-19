@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>学生录入系统</legend>
+            <p>
+                <span>姓名：</span>
+                <input type="text" name="username" class="username">
+            </p>
+            <p>
+                <span>年龄：</span>
+                <input type="text" name="age" class="age">
+            </p>
+            <p>
+                <span>性别：</span>
+                <select name="sex" id="sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </p>
+            <p>
+                <span>手机：</span>
+                <input type="text" name="phone" class="phone">
+            </p>
+            <p>
+                <button id="but">确认提交</button>
+            </p>
+        </fieldset>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>性别</td>
+                    <td>手机</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <!-- <tr>
+                    <td>张三</td>
+                    <td>18</td>
+                    <td>男</td>
+                    <td>15151515151515</td>
+                    <td>删除</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    //1.添加信息并展示
+    //2.删除
+
+    let sex = document.getElementById('sex')
+    let input = document.getElementsByTagName('input')
+    let tbody = document.getElementsByTagName('tbody')[0]
+    let but = document.getElementById('but')
+    // let stus = [{name:'李四',age:19,sex:'男',phone:1111111111}]
+    let stus = []
+    but.onclick = function () {
+        let obj = {
+            name: input[0].value,
+            age: input[1].value,
+            sex: sex.value,
+            phone: input[2].value
+        }
+        stus.push(obj)
+        console.log(stus);
+        let tr = ""
+        //遍历
+        stus.forEach((item, index) => {
+            tr += "<tr class = 'newtr'> " +
+                "<td> "+item.name+" </td>" +
+                "<td> "+item.age+" </td> " +
+                "<td> "+item.sex+" </td> " +
+                "<td> "+item.phone+" </td> " +
+                "<td onclick ='del("+index+")'> 删除 </td> " +
+                "</tr>"
+        })
+        tbody.innerHTML = tr
+    }
+    //删除操作
+    function del(index){
+        //删除信息
+        stus.splice(index,1)
+        //删除DOM元素(tr)
+        let res = document.getElementsByClassName("newtr")[index]
+        tbody.removeChild(res.index)
+    }
+</script>
+
+</html>

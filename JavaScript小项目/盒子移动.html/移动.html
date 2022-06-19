@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        position: absolute;
+    }
+    button{
+        position: relative;
+        top: 120px;
+    }
+</style>
+<body>
+    <div></div>
+    <button>点击开始</button>
+    <button>点击停止</button>
+</body>
+
+<script>
+    let btns = document.getElementsByTagName('button')
+    let div = document.getElementsByTagName('div')
+    let body = document.body
+    let num =0
+    let timer = null
+    btns[0].onclick = function(){
+        let speed = 5;//移速
+        if(timer==null){
+            timer = setInterval(()=>{
+                num+=speed;
+                div[0].style.left = num+'px'//移速进行不断增加
+
+                //判断是否大于等于页面的宽或者小于0时
+                if(num>=body.offsetWidth-div[0].offsetWidth||num<=0){
+                    //速度取反
+                    speed = -speed
+                }
+            },10)
+        }
+    }
+    btns[1].onclick = function(){
+        clearInterval(timer)
+        timer = null
+    }
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        ul{
+            width: 800px;
+            height: 350px;
+            border: 1px solid #ccc;
+            margin: auto;
+            text-align: center;
+        }
+        ul>li{
+            background-color: #ccc;
+            list-style: none;
+            float: left;
+            margin: 10px;
+            width: 50px;
+            height: 30px;
+        }
+        .click{
+            font-size: 10px;
+            text-align: center;
+            font-family: '仿宋';
+            line-height: 30px;
+            font-weight: bold;
+            color: #333;
+            background: orange;
+        }
+        div{
+            width: 300px;
+            height: 40px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            line-height: 40px;
+            margin: auto;
+            margin-top: 120px;
+            text-align: center;
+        }
+    </style>
+<body>
+    <ul>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li><li></li><li></li><li></li>
+        </li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li> <li></li><li></li><li></li> <li>
+        </li> <li></li> <li></li> <li></li> <li></li></li> <li></li> <li></li> <li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <p style="clear:both"></p>
+        <div>电影屏幕</div>
+    </ul>
+</body>
+<script>
+    //没有click类的时候进行添加，同时对文本赋值，再次点击的时候清空click类，同时对文本清空
+    let li = document.getElementsByTagName('li');
+    for(let i=0;i<li.length;i++){
+        li[i].onclick = function(){
+            let res = this.getAttribute('class')//获取属性是否存在
+            if(!res){
+                this.setAttribute('class','click')//添加属性
+                this.innerHTML = '已选'
+            }else{
+                this.setAttribute('class','')//添加属性
+                this.innerHTML = ''
+            }
+        }
+    }
+</script>
+</html>

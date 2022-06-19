@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .a {
+        height: 3000px;
+    }
+
+    .goTop {
+        width: 100px;
+        height: 100px;
+        background-color: #bbb;
+        text-align: center;
+        line-height: 100px;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="a">
+        <h2>返回顶部</h2>
+        <div class="goTop">返回</div>
+    </div>
+</body>
+<script>
+    window.onscroll = function () {
+        let res = document.documentElement.scrollTop
+        console.log(res);
+        let but = document.getElementsByClassName('goTop')[0]
+        //1.滚动条到达400，显示返回按钮,小于400时隐藏
+        if (res >= 400) {
+            but.style.display = 'block'
+        } else {
+            but.style.display = 'none'
+        }
+        //2.点击返回按钮时，滚动条恢复原位
+        but.onclick = function(){
+            document.documentElement.scrollTop = 0
+        }
+    }
+</script>
+
+</html>
